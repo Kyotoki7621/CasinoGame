@@ -8,7 +8,7 @@ public static class Define{
 }
 public class CreateCard : MonoBehaviour {
 
-	public GameObject[] card=new GameObject[Define.SHEETS];
+	public GameObject card;
 	public GameObject[] Deck=new GameObject[Define.SHEETS];
 	//int cardCount=0;
 	private GameObject trump;
@@ -29,14 +29,14 @@ public class CreateCard : MonoBehaviour {
 	void Start () {
 		DeckPos=this.transform.position;
 		for(int i=0;i<Deck.Length;i++){
-			trump=Instantiate(card[i]) as GameObject;
+			trump=Instantiate(card) as GameObject;
 			Deck[i]=trump;	
 		}
 		Shuffle(Deck);
 
 		for(int i=0;i<Deck.Length;i++){
 			Deck[i].transform.position=new Vector3(DeckPos.x,SetCard,DeckPos.z);
-			SetCard+=0.01f;
+			SetCard+=0.01f;//(int)Deck[i].transform.localScale.y;
 			
 		}
 	}
